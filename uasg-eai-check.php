@@ -46,6 +46,8 @@ function startsWith($haystack, $needle) {
 function uasg_eai_checker() { // Display EAI checker form
     ob_start(); ?>
 
+
+
     <div class="fusion-builder-row fusion-builder-row-inner fusion-row ">
         <form method="post" action="">
             <div class="fusion-layout-column fusion_builder_column fusion_builder_column_2_3  fusion-two-third fusion-column-first 2_3" style="margin-top: 0px;margin-bottom: 20px;width:66.66%;width:calc(66.66% - ( ( 4% ) * 0.6666 ) );margin-right:4%;">
@@ -65,10 +67,19 @@ function uasg_eai_checker() { // Display EAI checker form
             </div><!--/submit button-->
         </form>
         <?php if(isset($_POST['submit'])) { ?>
+        <script>
+        // Scrolls to the results section if the results section gets loaded
+        jQuery(function(){
+            jQuery('#LoadingImage').hide();
+            jQuery('html, body').animate({
+                scrollTop: jQuery('#results').offset().top -150
+            }, 2000);
+        });
+        </script>
             <div class="fusion-layout-column fusion_builder_column fusion_builder_column_1_2  fusion-one-half fusion-column-first 1_2" style="margin-top: 0px;margin-bottom: 20px;width:50%;width:calc(50% - ( ( 4% ) * 0.5 ) );margin-right:4%;">
                 <div class="fusion-column-wrapper" style="background-color:#fdfdfd;padding: 20px 20px 20px 20px;background-position:left top;background-repeat:no-repeat;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;" data-bg-url="">
                     <div class="fusion-title title sep-underline sep-solid fusion-title-size-three fusion-border-below-title" style="border-bottom-color:#e0dede;margin-top:0px;margin-bottom:40px;">
-                        <h3 class="title-heading-left">Results</h3>
+                        <h3 id="results" class="title-heading-left">Results</h3>
                     </div>
                     <div class="fusion-text">
                         <?php
